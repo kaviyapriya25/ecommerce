@@ -14,10 +14,10 @@ const App = () => {
     <Route index element = {<Home />} />
     <Route path = "/home" element = {<Home />} />
     <Route path = "/Login" element = {<Login/>}  />
-    <Route path = "Register" element = {<Register />} />
-    <Route path = "Product" element = {<Product />} />
-    <Route path = "ProductList" element = {<ProductList />} />
-    <Route path = "Cart" element = {<Cart />} />
+    <Route path = "/Register" element = {<Register />} />
+    <Route path = "/Product" element = {<Product />} />
+    <Route path = "/ProductList" element = {<ProductList />} />
+    <Route path = "/Cart" element = {<Cart />} />
     </Routes>
     </BrowserRouter>
 </div>

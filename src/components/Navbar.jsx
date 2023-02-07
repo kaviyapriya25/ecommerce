@@ -1,6 +1,7 @@
 import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined} from '@material-ui/icons';
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { mobile } from "../responsive";
 
@@ -25,8 +26,8 @@ align-item:center;
 
 const Language = styled.span`
   font-size:14px;
-  cursor: pointer;
   ${mobile({ display: "none" })}
+  cursor: pointer;
 `
 const SearchContainer =styled.div`
 border: 0.5px solid lightgray;
@@ -66,6 +67,22 @@ ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `
 
 const Navbar = () => {
+  const kaviya = useNavigate()
+  const  handleSubmit = ()=>{
+    kaviya("/Register")
+  }
+  const handleClick = () =>{
+    kaviya("/Login")
+  }
+  const Submit = () =>{
+ kaviya("/Cart")
+  }
+  const handleOn = ()=>{
+    kaviya ("/Product")
+  }
+  const onSubmit = () => {
+    kaviya ("/ProductList")
+  }
   return (
     <Container>
     <Wrapper>
@@ -78,8 +95,14 @@ const Navbar = () => {
       </Left>
       <Center><Logo>LAMA</Logo></Center>
       <Right>
-        <MenuItem>REGISTER</MenuItem>
-        <MenuItem>SIGN IN</MenuItem>
+        
+        
+        <MenuItem onClick ={handleSubmit}>REGISTER</MenuItem> 
+
+        <MenuItem onClick = {handleClick}>SIGN IN</MenuItem> 
+        <MenuItem onClick = {Submit}>Cart</MenuItem>
+        <MenuItem onClick = {handleOn}>Product</MenuItem>
+        <MenuItem onClick = {onSubmit}>ProductList</MenuItem>
         <MenuItem>
         <Badge badgeContent={4} color="primary">
       <ShoppingCartOutlined />

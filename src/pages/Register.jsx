@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import {Form,Button,Input, } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
 width: 100vw;
@@ -50,17 +51,17 @@ font-weight: 300;
 // `;
 
 const Register = () => {
+  const priya = useNavigate ()
+  const handleSubmit = () =>{
+ priya ("/Login ")
+  }
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form autoComplete="off"  labelCol={{ span: 20 }}
           wrapperCol={{ span: 25}}
-          onFinish={(values)=>{
-            console.log({ values});
-          }}
-          onFinishFailed ={(error) => {
-            console.log({error});}} >
+          onFinish ={handleSubmit}>
           <Form.Item name="first name"
           rules ={[
          {

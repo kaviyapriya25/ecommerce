@@ -1,12 +1,15 @@
-import styled from "styled-components";
-import {Form,Button,Input } from "antd";
+import styled ,{keyframes} from "styled-components";
+import {Form,Button,Input,} from "antd";
 import { mobile } from "../responsive";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import loginImg from "../assets/login.svg";
+import { blue, brown, red } from "@material-ui/core/colors";
+import { slideInDown, slideOutUp } from "react-animations";
 
 
 const Container = styled.div`
 width: 100vw;
-height: 200vh;
+height: 120vh;
 background: linear-gradient(
     rgba(255,255,255,0.5),
     rgba(255,255,255,0.5)
@@ -17,21 +20,38 @@ background-size:cover;
 display: flex;
 align-items: center;
 justify-content: center;
+animation-name: breathe-animation 0.5s ease;
+
 `;
+    
+
+
 
 const Wrapper = styled.div`
 width:24%;
 padding: 20px;
-margin-bottom: 40%;
+
 background-color: white;
+animation: slide-up 0.5s ease;
 ${mobile({ width: "75%" })}
+
 `;
+const slideInAnimation = keyframes`${slideInDown}`;
+const slideOutAnimation = keyframes`${slideOutUp}`;
+
+const Image= styled.img`
+background-color: yellow;
+  animation: 0.4s ${slideInAnimation}, 0.4s ${slideOutAnimation};
+  
+`;
+
 
 const Title = styled.h1`
 font-size: 20px;
 font-weight: 300;
 
 `;
+
 
 // const Form = styled.div`
 // display: flex;
@@ -65,12 +85,23 @@ font-weight: 300;
 // `;
 
 const Login = () => {
+  const navigate=useNavigate();
+  function handlesubmit (e) {
+    console.log("kaviya,",e);
+    navigate("/home")
+    
+  }
   return (
+
     <Container>
+    
+        <Image  width={ 300}  height = {260} background-color ={red} src={loginImg} alt="login" />
+      
       <Wrapper>
+      
         <Title>SIGN IN</Title>
         <Form autoComplete="off"  labelCol={{ span: 12 }}
-          wrapperCol={{ span: 16}} >
+          wrapperCol={{ span: 16}} onFinish ={ (e) => handlesubmit (e)}>
           <Form.Item name="name" 
           
           rules={[
@@ -82,7 +113,7 @@ const Login = () => {
         
             },
             {min : 3},
-
+                        
           ]}
           hasFeedback
           >
@@ -99,7 +130,7 @@ const Login = () => {
         <Input.Password placeholder="password"/>
         </Form.Item>
         <Form.Item  wrapperCol={{ span: 24 }}>
-        <Button  type = "primary" htmlType ="submit" >
+        <Button  type = "primary"  htmlType="submit" >
           LOGIN
           </Button>
         </Form.Item>
