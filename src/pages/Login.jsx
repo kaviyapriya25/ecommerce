@@ -42,7 +42,7 @@ const slideOutAnimation = keyframes`${slideOutUp}`;
 const Image= styled.img`
 background-color: yellow;
   animation: 0.4s ${slideInAnimation}, 0.4s ${slideOutAnimation};
-  
+  // display: ${ ifProp('isActive', 'block', 'none')};
 `;
 
 
